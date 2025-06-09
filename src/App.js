@@ -62,7 +62,8 @@ const App = () => {
             <CategoryBar onSelectCategory={setSelectedCategory} />
             <Courses
               courses={filteredCourses}
-              onCourseClick={handleCourseClick}
+              selectedCourse={selectedCourse}
+              onCourseSelect={handleCourseClick}
             />
           </>
         )}

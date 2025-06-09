@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CourseCard from "./CourseCard";
 import CourseDetail from "./CourseDetail";
 
-const Courses = ({ courses }) => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
+const Courses = ({ courses, selectedCourse, onCourseSelect }) => {
   const itemsPerGroup = 4;
 
   // Oblicz indeks kursu w aktualnej (przefiltrowanej) liście
@@ -12,13 +11,11 @@ const Courses = ({ courses }) => {
     : null;
 
   const handleCourseClick = (course) => () => {
-    setSelectedCourse((prev) =>
-      prev && prev.title === course.title ? null : course
-    );
+    onCourseSelect(course);
   };
 
   const handleCloseDetail = () => {
-    setSelectedCourse(null);
+    onCourseSelect(null);
   };
 
   return (
